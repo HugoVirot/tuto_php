@@ -1,5 +1,6 @@
 <?php
 // si on a reçu le formulaire, on teste ce qu'il contient
+// IS SET = est défini => vérifie l'existence de la variable
 if (isset($_POST['email'])) {
     var_dump($_POST);
 }
@@ -15,16 +16,20 @@ if (isset($_POST['email'])) {
 $tableau = ['Cédrick', 1512, true, 8989.44];
 
 // foreach ($variabledutableau as $aliasdechaqueélément)
-foreach($tableau as $cle => $valeur){
+foreach ($tableau as $cle => $valeur) {
     echo $cle . " " . $valeur . "<br>";
 }
 
 // tableau associatif (couples clé => valeur)
 $eleves = [
-    ['nom' => 'Atayi',
-    'prenom' => 'Nicolas'],
-    ['nom' => 'Ponet',
-    'prenom' => 'Cédrick'],
+    [
+        'nom' => 'Atayi',
+        'prenom' => 'Nicolas'
+    ],
+    [
+        'nom' => 'Ponet',
+        'prenom' => 'Cédrick'
+    ],
 ];
 
 // foreach ($eleves as $eleve){
@@ -55,27 +60,28 @@ $eleves = [
             <!-- action = page de destination / méthode : méthode HTTP utilisée -->
             <form action="index.php" method="POST">
 
+                <!-- input caché -->
                 <input type="hidden" value="je suis un input caché" name="inputSecret">
 
                 <div class="mb-3">
-
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
                     <!-- name => très important, permet de récupérer l'info -->
                     <!-- required => très important, permet d'obliger à remplir l'input -->
-                    <input name="email" type="email" class="form-control" id="exampleInputEmail1" required aria-describedby="emailHelp">
-
+                    <input name="email" type="email" class="form-control" id="exampleInputEmail1" required aria-describedby="emailHelp" placeholder="truc@machin.fr">
                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-
                 </div>
 
                 <div class="mb-3">
-
                     <label for="exampleInputPassword1" class="form-label">Password</label>
-
                     <input name="password" type="password" class="form-control" required id="exampleInputPassword1">
-
                 </div>
 
+                
+                <div class="mb-3">
+                    <label for="prenom" class="form-label">Prénom</label>
+                    <input name="prenom" type="text" class="form-control" required id="prenom" placeholder="Paul">
+                </div>
+                <!-- 
                 <div class="mb-3 form-check">
 
                     <input type="checkbox" class="form-check-input" id="exampleCheck1" name="checkbox">
@@ -101,10 +107,10 @@ $eleves = [
                         <input type="radio" id="louie" name="drone" value="louie">
                         <label for="louie">Louie</label>
                     </div>
-                </fieldset>
+                </fieldset> -->
 
                 <!-- submit => très important, permet de valider le formulaire -->
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Valider</button>
 
             </form>
 
